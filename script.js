@@ -4,7 +4,6 @@ let newClass = "active";
 // for addForm =======================================================================================================
 const createForm = document.querySelector(".create-form"),
     titleInp = document.querySelector(".title-inp"),
-    fileInp = document.querySelector(".file"),
     newNotePadWrapper = document.querySelector("main");
     
 const NoteDb = JSON.parse(localStorage.getItem("to-do-list")) || [];
@@ -13,11 +12,7 @@ createForm.addEventListener("submit", (e) => {
     e.preventDefault()
 
     let TitleVal = titleInp.value;
-    let FileVal = fileInp.value;
-
-    NoteDb.push(TitleVal);
-
-    createNewNote(NoteDb);
+    
     console.log(NoteDb);
     console.log(FileVal);
 
