@@ -11,6 +11,7 @@
         width: 50%;
         height: 15px;
         bottom: 200px;
+        display: none;
     }
 
     main {
