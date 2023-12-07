@@ -12,7 +12,11 @@ createForm.addEventListener("submit", (e) => {
     e.preventDefault()
 
     let TitleVal = titleInp.value;
-    
+    let FileVal = fileInp.value;
+
+    NoteDb.push(TitleVal);
+
+    createNewNote(NoteDb);
     console.log(NoteDb);
     console.log(FileVal);
 
