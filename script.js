@@ -42,47 +42,29 @@ createForm.addEventListener("submit", (e) => {
   
 });    
 
-// for login form
-const loginForm = document.querySelector(".login-form"),
-    loginInp = document.querySelector(".login-inp"),
-    loginBtn = document.querySelector(".login-btn"),
-    profileName = document.querySelector(".accaunt-name"),
-    registerPage = document.querySelector(".register");
+// For Loader Page
 
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+const loaderShort = document.querySelector(".loader-short");
+const loaderPage = document.querySelector(".loader");
+const counter = document.querySelector(".count")
 
-    let newLoginVal = loginInp.value;
-    localStorage.setItem("newLoginVal", newLoginVal);
-    registerPage.classList.toggle(newClass);
+let pos = 1;
+timerId = setInterval(addWidth, 100);
 
-    e.target.reset()
-});
+function addWidth() {
+    if (pos === 100) {
+        clearInterval()
 
-let getNewLoginVal
+        setTimeout(() => {
+            loaderPage.classList.add(newClass)
+        }, [timerId])
 
-function createAccaunt() {
-    getNewLoginVal = localStorage.getItem("newLoginVal");
-    profileName.innerHTML = getNewLoginVal;
+        counter.classList.add(newClass)
+        
+    } else {
+        pos++
+        loaderShort.style.width = pos + "%"
+        counter.innerHTML = pos + "%"
+    }
 }
-
-createAccaunt()
-
-// for profile page
-const openProfile = document.querySelector("#open-accaunt"),
-    profielPage = document.querySelector(".profile-dad"),
-    closeProfile = document.querySelector(".remove-profile"),
-    logout = document.querySelector(".logout");
-
-openProfile.addEventListener("click", () => {
-    profielPage.classList.add(newClass);
-});  
-
-closeProfile.addEventListener("click", () => {
-    profielPage.classList.remove(newClass);
-});
-
-logout.addEventListener("click", () => {
-    registerPage.classList.toggle(newClass)
-    profielPage.classList.remove(newClass);
-});
+addWidth()

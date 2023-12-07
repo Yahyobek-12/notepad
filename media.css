@@ -1,0 +1,35 @@
+@media screen and (max-width: 450px) {
+    .plus {
+        right: 10px;
+        bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 325px) {
+
+    .loader-long {
+        width: 50%;
+        height: 15px;
+        bottom: 200px;
+    }
+
+    main {
+        width: 260px;
+        height: 250px;
+        margin-left: 0.1rem;
+    }
+
+    .main-logo {
+        display: none;
+    }
+
+    .result {
+        padding: 5px;
+        font-size: 20px;
+        margin-top: 3rem;
+    }
+
+    .from {
+        bottom: 50px;
+    }
+}
