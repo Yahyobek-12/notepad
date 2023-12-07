@@ -7,13 +7,7 @@
     .loader-long {
         width: 50%;
         height: 15px;
-        bottom: 200px;
-    }
-
-    main {
-        width: 260px;
-        height: 250px;
-        margin-left: 0.1rem;
+        bottom: 220px;
     }
 
     .main-logo {
@@ -27,6 +21,6 @@
     }
 
     .from {
-        bottom: 50px;
+        bottom: 100px;
     }
 }
