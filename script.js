@@ -1,7 +1,54 @@
 // newClass key
-let newClass = "active";
+let newClass = "active"; 
 
-// for show & close 
+// for addForm =======================================================================================================
+const createForm = document.querySelector(".create-form"),
+    titleInp = document.querySelector(".title-inp"),
+    fileInp = document.querySelector(".file"),
+    newNotePadWrapper = document.querySelector("main");
+    
+const NoteDb = JSON.parse(localStorage.getItem("to-do-list")) || [];
+
+createForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    let TitleVal = titleInp.value;
+    let FileVal = fileInp.value;
+
+    NoteDb.push(TitleVal);
+
+    createNewNote(NoteDb);
+    console.log(NoteDb);
+    console.log(FileVal);
+
+    dadForm.classList.toggle(newClass);
+
+    e.target.reset()
+  
+});    
+
+
+function createNewNote (NoteDb) {
+    newNotePadWrapper.innerHTML = "";
+
+    NoteDb.forEach((item, idx) => {
+        
+        newNotePadWrapper.innerHTML += `
+            <li class="new-note" ${idx}>
+                <h3 class="title">${item}</h3>
+                <button class='remove-note'><i class="bx bx-trash"></i></button>
+            </li>
+        `
+
+    });
+
+    localStorage.setItem("to-do-list", JSON.stringify(NoteDb));
+
+};
+
+createNewNote(NoteDb)
+
+// for show & close =======================================================================================================
 const clickToggle = document.querySelector(".plus"),
     dadForm = document.querySelector(".dad-form");
 
@@ -9,40 +56,9 @@ const clickToggle = document.querySelector(".plus"),
 clickToggle.addEventListener("click", () => {
     dadForm.classList.toggle(newClass);
     clickToggle.classList.toggle(newClass);
-});  
+}); 
 
-// for addForm
-const createForm = document.querySelector(".create-form"),
-    titleInp = document.querySelector(".title-inp"),
-    descriptionInp = document.querySelector("textarea"),
-    fileInp = document.querySelector(".file");
-
-    
-const NoteDb = {
-    titleDb: [],
-    descriptionDb: [],
-};
-    
-document.querySelector(".form-logo").innerHTML = localStorage.getItem("titleVal");
-
-
-createForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-
-    let TitleVal = titleInp.value;
-    let DescriptionVal = descriptionInp.value;
-    
-    NoteDb.titleDb.push();
-
-    localStorage.setItem("titleVal", TitleVal)
-
-    document.querySelector(".form-logo").innerHTML = localStorage.getItem("titleVal");
-
-    e.target.reset()
-  
-});    
-
-// For Loader Page
+// For Loader Page =======================================================================================================
 
 const loaderShort = document.querySelector(".loader-short");
 const loaderPage = document.querySelector(".loader");
