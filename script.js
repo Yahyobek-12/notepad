@@ -10,8 +10,6 @@ const createForm = document.querySelector(".create-form"),
     noNote = document.querySelector(".no-note");
     
 const NoteDb = JSON.parse(localStorage.getItem("to-do-list")) || [];
-const noWrite = noNote.classList.toggle(newClass);
-JSON.parse(localStorage.getItem("no-write", noWrite));
 
 createForm.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -24,7 +22,6 @@ createForm.addEventListener("submit", (e) => {
         createNewNote(NoteDb);
         dadForm.classList.toggle(newClass);
         clickToggle.classList.toggle(newClass);
-        localStorage.setItem("no-write", JSON.stringify(noWrite));
     }
 
     e.target.reset()
