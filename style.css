@@ -152,15 +152,13 @@ main ul li {
     cursor: pointer;
     position: absolute;
     border-radius: 50px;
+    background: #212121;
     transition: transform .3s ease;
 }
 
 .plus.active {
+    background: crimson;
     transform: rotate(135deg);
-}
-
-.plus:hover {
-    background: #212121;
 }
 
 .dad-form {
