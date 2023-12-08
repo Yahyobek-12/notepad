@@ -4,7 +4,9 @@ let newClass = "active";
 // for addForm =======================================================================================================
 const createForm = document.querySelector(".create-form"),
     titleInp = document.querySelector(".title-inp"),
-    newNotePadWrapper = document.querySelector("main");
+    newNotePadWrapper = document.querySelector("main"),
+    newNote = document.querySelector("li"),
+    removeNote = document.querySelector(".remove-note");
     
 const NoteDb = JSON.parse(localStorage.getItem("to-do-list")) || [];
 
@@ -16,6 +18,7 @@ createForm.addEventListener("submit", (e) => {
     NoteDb.push(TitleVal);
     createNewNote(NoteDb);
     console.log(NoteDb);
+    newNote.style.backgroundColor = TitleVal
     dadForm.classList.toggle(newClass);
 
     e.target.reset()
@@ -39,9 +42,19 @@ function createNewNote (NoteDb) {
 
     localStorage.setItem("to-do-list", JSON.stringify(NoteDb));
 
+    document.querySelectorAll(".remove-note").forEach((item, idx) => {
+        item.addEventListener("click", () => {
+            item.parentElement.remove()
+            NoteDb.splice(idx, 1);
+            console.log("delted");
+            createNewNote(NoteDb);
+            localStorage.removeItem("to-do-list", JSON.stringify(NoteDb));
+        });
+    });
+
 };
 
-createNewNote(NoteDb)
+createNewNote(NoteDb);
 
 // for show & close =======================================================================================================
 const clickToggle = document.querySelector(".plus"),
