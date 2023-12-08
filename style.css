@@ -115,19 +115,6 @@ nav {
     text-shadow: 1px 3px #000;
 }
 
-.accaunt {
-    right: 30px;
-    color: #fff;
-    font-size: 30px;
-    cursor: pointer;
-    position: absolute;
-    transition: transform .3s ease;
-}
-
-.accaunt:hover {
-    transform: translateY(10%);
-}
-
 main {
     left: 0;
     top: 80px;

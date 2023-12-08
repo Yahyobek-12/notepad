@@ -6,25 +6,34 @@ const createForm = document.querySelector(".create-form"),
     titleInp = document.querySelector(".title-inp"),
     newNotePadWrapper = document.querySelector("main"),
     newNote = document.querySelector("li"),
-    removeNote = document.querySelector(".remove-note");
+    removeNote = document.querySelector(".remove-note"),
+    noNote = document.querySelector(".no-note");
     
 const NoteDb = JSON.parse(localStorage.getItem("to-do-list")) || [];
+const noWrite = noNote.classList.toggle(newClass);
+JSON.parse(localStorage.getItem("no-write", noWrite));
 
 createForm.addEventListener("submit", (e) => {
     e.preventDefault()
 
     let TitleVal = titleInp.value;
 
-    NoteDb.push(TitleVal);
-    createNewNote(NoteDb);
-    console.log(NoteDb);
-    newNote.style.backgroundColor = TitleVal
-    dadForm.classList.toggle(newClass);
+    if(TitleVal) {
+        sortArr(NoteDb);
+        NoteDb.push(TitleVal);
+        createNewNote(NoteDb);
+        dadForm.classList.toggle(newClass);
+        clickToggle.classList.toggle(newClass);
+        localStorage.setItem("no-write", JSON.stringify(noWrite));
+    }
 
     e.target.reset()
   
-});    
+}); 
 
+const sortArr = (arr) => {
+    arr.sort()
+} 
 
 function createNewNote (NoteDb) {
     newNotePadWrapper.innerHTML = "";
@@ -43,6 +52,7 @@ function createNewNote (NoteDb) {
     localStorage.setItem("to-do-list", JSON.stringify(NoteDb));
 
     document.querySelectorAll(".remove-note").forEach((item, idx) => {
+        sortArr(NoteDb)
         item.addEventListener("click", () => {
             item.parentElement.remove()
             NoteDb.splice(idx, 1);
@@ -54,6 +64,7 @@ function createNewNote (NoteDb) {
 
 };
 
+sortArr(NoteDb)
 createNewNote(NoteDb);
 
 // for show & close =======================================================================================================
@@ -73,7 +84,7 @@ const loaderPage = document.querySelector(".loader");
 const counter = document.querySelector(".count")
 
 let pos = 1;
-timerId = setInterval(addWidth, 100);
+timerId = setInterval(addWidth, 50);
 
 function addWidth() {
     if (pos === 100) {
