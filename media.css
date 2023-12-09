@@ -2,11 +2,6 @@
     main {
         padding: 50px 50px;
     }
-
-    .no-note img {
-        width: 250px;
-        height: 250px;
-    }
 }
 
 
@@ -39,5 +34,9 @@
 
     .from {
         bottom: 100px;
+    }
+
+    .new-note  .title{
+        font-size: 25px;
     }
 }

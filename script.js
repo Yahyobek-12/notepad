@@ -3,26 +3,30 @@ let newClass = "active";
 
 // for addForm =======================================================================================================
 const createForm = document.querySelector(".create-form"),
+    newNote = document.querySelector("li"),
     titleInp = document.querySelector(".title-inp"),
     newNotePadWrapper = document.querySelector("main"),
-    newNote = document.querySelector("li"),
-    removeNote = document.querySelector(".remove-note"),
-    noNote = document.querySelector(".no-note");
+    removeNote = document.querySelector(".remove-note");
     
-const NoteDb = JSON.parse(localStorage.getItem("to-do-list")) || [];
+const TitleDb = JSON.parse(localStorage.getItem("to-do-list")) || [];
 
 createForm.addEventListener("submit", (e) => {
     e.preventDefault()
 
     let TitleVal = titleInp.value;
 
-    if(TitleVal) {
-        sortArr(NoteDb);
-        NoteDb.push(TitleVal);
-        createNewNote(NoteDb);
+    if (TitleVal === '') {
+        swal("Please Write text!", "", "error");
+    } else {
+        sortArr(TitleDb);
+        TitleDb.push(TitleVal);
+        createNewNote(TitleDb);
         dadForm.classList.toggle(newClass);
         clickToggle.classList.toggle(newClass);
+        swal("created successfully!", "Good job", "success");
     }
+
+    
 
     e.target.reset()
   
@@ -32,10 +36,10 @@ const sortArr = (arr) => {
     arr.sort()
 } 
 
-function createNewNote (NoteDb) {
+function createNewNote (TitleDb) {
     newNotePadWrapper.innerHTML = "";
 
-    NoteDb.forEach((item, idx) => {
+    TitleDb.forEach((item, idx) => {
         
         newNotePadWrapper.innerHTML += `
             <li class="new-note" ${idx}>
@@ -46,23 +50,23 @@ function createNewNote (NoteDb) {
 
     });
 
-    localStorage.setItem("to-do-list", JSON.stringify(NoteDb));
+    localStorage.setItem("to-do-list", JSON.stringify(TitleDb));
 
     document.querySelectorAll(".remove-note").forEach((item, idx) => {
-        sortArr(NoteDb)
+        sortArr(TitleDb)
         item.addEventListener("click", () => {
             item.parentElement.remove()
-            NoteDb.splice(idx, 1);
-            console.log("delted");
-            createNewNote(NoteDb);
-            localStorage.removeItem("to-do-list", JSON.stringify(NoteDb));
+            TitleDb.splice(idx, 1);
+            createNewNote(TitleDb);
+            swal("Deleted successfully!", "No Item", "success");
+            localStorage.removeItem("to-do-list", JSON.stringify(TitleDb));
         });
     });
 
 };
 
-sortArr(NoteDb)
-createNewNote(NoteDb);
+sortArr(TitleDb)
+createNewNote(TitleDb);
 
 // for show & close =======================================================================================================
 const clickToggle = document.querySelector(".plus"),
@@ -81,7 +85,7 @@ const loaderPage = document.querySelector(".loader");
 const counter = document.querySelector(".count")
 
 let pos = 1;
-timerId = setInterval(addWidth, 50);
+// timerId = setInterval(addWidth, 50);
 
 function addWidth() {
     if (pos === 100) {
