@@ -8,11 +8,6 @@ clickToggle.addEventListener("click", () => {
     clickToggle.classList.toggle(newClass);
 }); 
 
-dadForm.addEventListener("click", () => {
-    dadForm.classList.toggle(newClass);
-    clickToggle.classList.toggle(newClass);
-});
-
 // For Loader Page =======================================================================================================
 
 const loaderShort = document.querySelector(".loader-short");
