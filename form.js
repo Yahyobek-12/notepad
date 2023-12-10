@@ -22,7 +22,7 @@ createForm.addEventListener("submit", (e) => {
             audio.play()
         }
 
-        playSound("music/so'z.mp3");
+        playSound("music/error.mp3");
 
     } else {
         sortArr(TitleDb);
@@ -37,7 +37,7 @@ createForm.addEventListener("submit", (e) => {
             audio.play()
         }
 
-        playSound("music/yaratildi.mp3");
+        playSound("music/succesfuly.mp3");
     }
 
     
