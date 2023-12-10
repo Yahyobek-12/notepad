@@ -16,7 +16,14 @@ createForm.addEventListener("submit", (e) => {
     let TitleVal = titleInp.value;
 
     if (TitleVal === '') {
-        swal("Please Write text!", "", "error");
+        swal("Please Write text!", "Try again", "error");
+        function playSound(musicName) {
+            let audio = new Audio(musicName)
+            audio.play()
+        }
+
+        playSound("music/so'z.mp3");
+
     } else {
         sortArr(TitleDb);
         TitleDb.push(TitleVal);
@@ -24,6 +31,13 @@ createForm.addEventListener("submit", (e) => {
         dadForm.classList.toggle(newClass);
         clickToggle.classList.toggle(newClass);
         swal("created successfully!", "Good job", "success");
+
+        function playSound(musicName) {
+            let audio = new Audio(musicName)
+            audio.play()
+        }
+
+        playSound("music/yaratildi.mp3");
     }
 
     
@@ -85,7 +99,7 @@ const loaderPage = document.querySelector(".loader");
 const counter = document.querySelector(".count")
 
 let pos = 1;
-timerId = setInterval(addWidth, 50);
+// timerId = setInterval(addWidth, 50);
 
 function addWidth() {
     if (pos === 100) {

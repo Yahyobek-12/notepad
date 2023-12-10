@@ -215,7 +215,7 @@ main ul li {
     color: #fff;
 }
 
-input {
+.title-inp {
     width: 100%;
     border: none;
     outline: none;
@@ -227,12 +227,15 @@ input {
     border-radius: 5px;
 }
 
-.file {
+.textarea {
     width: 100%;
+    height: 40%;
     border: none;
     outline: none;
-    padding: 10px;
-    color: #fff;
+    font-size: 20px;
+    margin-top: 1rem;
+    padding: 10px 5px;
+    border-radius: 5px;
 }
 
 .btn-save {
@@ -263,36 +266,40 @@ input {
     width: 100%;
     height: 7vh;
     display: flex;
+    list-style: none;
     overflow: hidden;
+    position: relative;
     border-radius: 5px;
     margin-bottom: 3rem;
-    align-items: center;
     background: #212121;
-    border: 1px solid #f1f2f3;
+    align-items: center;
     justify-content: space-between;
-}
-
-.new-note .note-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .new-note .title {
     color: #fff;
-    font-size: 30px;
+    font-size: 25px;
+    margin-left: .5rem;
+}
+
+.new-note .description {
+    color: #fff;
+    margin-top: .5rem;
     margin-left: .5rem;
 }
 
 .remove-note {
+    top: 0;
+    right: 0;
     width: 50px;
-    height: 100%;
+    height: 50px;
     border: none;
     outline: none;
-    color: #f1f2f3;
-    font-size: 30px;
     cursor: pointer;
+    font-size: 30px;
+    color: #f1f2f3;
     border-radius: 5px;
+    position: absolute;
     background: transparent;
 }
 
