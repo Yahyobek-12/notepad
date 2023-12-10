@@ -74,6 +74,13 @@ function createNewNote (TitleDb) {
             createNewNote(TitleDb);
             swal("Deleted successfully!", "No Item", "success");
             localStorage.removeItem("to-do-list", JSON.stringify(TitleDb));
+
+            function playSound(musicName) {
+                let audio = new Audio(musicName)
+                audio.play()
+            }
+    
+            playSound("music/deleted.mp3");
         });
     });
 
