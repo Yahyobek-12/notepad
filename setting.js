@@ -15,7 +15,7 @@ const loaderPage = document.querySelector(".loader");
 const counter = document.querySelector(".count")
 
 let pos = 1;
-// timerId = setInterval(addWidth, 50);
+timerId = setInterval(addWidth, 50);
 
 function addWidth() {
     if (pos === 100) {
